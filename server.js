@@ -42,6 +42,7 @@ app.use(function (req, res, next) {
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
+app.use(express.static('public'));
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
 
@@ -58,6 +59,7 @@ function adminAuth(req, res, next) {
 
 // A protected endpoint which needs a valid JWT to access it
 app.get('/api/protected', [jwtAuth, adminAuth], (req, res) => {  
+  console.log(req.user);
   return res.json({
     data: 'rosebud'
   });
