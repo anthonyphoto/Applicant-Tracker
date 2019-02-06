@@ -41,74 +41,6 @@
       </div>
     </main>
 
-    <div id='js-rpt' class='main_bg hidden' aria-live='polite'>
-      <div class='font_m'>&nbsp;</div> <!-- add extra space -->
-      <div class='row'>
-          <div class='col-12'>
-          <div class='font_l al_center'>Summary</div>
-          <div class='font_m al_center' id='js-summary'>
-              This picture was taken in San Diego area 
-              at 6:31pm on August 9, 2015.              
-              Apple camera (model: iPhone 6s) was used with iOS 1.4.2.               
-          </div>
-      </div>
-
-      <div class='row' id='js-spec'>
-        <div class='spec-row'> 
-
-          <div class='col-4'>
-            <div class='font_s_title'>
-                File Info
-            </div>
-            <div class='font_s'>
-              <ul id='js-col1'>
-                <li>Name: IMG_5197.JPG</li>
-                <li>Resolution: 2576 x 1932</li>
-                <li>File Size: 844 KB</li>              
-              </ul>
-            </div>
-          </div>
-          <div class='col-4'>
-            <div class='font_s_title'>
-                Camera Setting
-            </div>
-            <div class='font_s'>
-              <ul id='js-col2'>
-                <li>Shot at 2.65 mm</li>
-                <li>1/15 sec, F/2.2, ISO320</li>
-                <li>Flash Fired</li>              
-              </ul>
-            </div>
-          </div>
-          <div class='col-4'>
-            <div class='font_s_title spec_col'>
-                Camera Info
-            </div>
-            <div class='font_s spec_col'>
-              <ul id='js-col3'>
-                <li>Brand: Apple</li>
-                <li>Model: iPhone 6s</li>
-                <li> Software: iOS 11.4.1</li>              
-              </ul>
-            </div>
-          </div>    
-        </div>
-      </div>
-
-      <div class='font_m'>&nbsp;</div> <!-- add extra space -->
-
-      <div class='row'> 
-        <div class='col-12'>
-          <div class='font_l al_center' id='js-loc'>San Diego</div>
-          <div class='font_m al_center' id='js-loc-desc'>
-            Please find a spot where the picture was taken in the map below.  
-            The current weather in San Diego is "HAZE" and temperature is 47°F.
-          </div>
-          <div class='font_m'>&nbsp;</div> <!-- add extra space -->
-          <div id='map'></div> 
-          <div class='font_m'>&nbsp;</div> <!-- add extra space -->
-        </div> 
-      </div>
       <div class='row'> 
         <div class='col-12'>
           <div id='js-img' class='al_center'> 
@@ -118,10 +50,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="exif.js"></script> 
-    <script type="text/javascript" src="render.js"></script>
     <script type="text/javascript" src="index.js"></script>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZru626EgBL1Ry4UzDOIr-VpjunKoQtO8&callback=initMap" async defer></script>
   </body>
 </html>

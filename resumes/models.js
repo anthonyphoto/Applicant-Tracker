@@ -37,9 +37,19 @@ const resumeSchema = mongoose.Schema({
 });
 
 resumeSchema.pre('findOne', function(next){
-    this.populate('user');
+    this.populate('submitter');
     next();
 });
 
+resumeSchema.pre('find', function(next){
+    this.populate('submitter');
+    next();
+});
+
+/*
+resumeSchema.virtual("role").get(function(){
+    return `admin: ${this.submitter.admin}`;
+});
+*/
 const Resume = mongoose.model('Resume', resumeSchema);  // collections = resumes
 module.exports = { Resume };
