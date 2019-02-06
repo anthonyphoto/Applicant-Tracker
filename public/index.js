@@ -1,13 +1,20 @@
 'use strict';
 
-const resumeEndpoint = 'http://localhost:8080/resumes/'
+//const resumeEndpoint = 'http://localhost:8080/resumes/'
 
 
 
 
 function logIn() {
   console.log('test');
-  fetch(resumeEndpoint)
+  fetch('/resumes/', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "GET",
+//      body: JSON.stringify(user)
+    })
     .then(response => {
       return response.json();
 
