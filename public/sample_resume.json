@@ -1,0 +1,26 @@
+{ 
+	"firstName": "Anthony",
+	"lastName": "Kim",
+    "email": "anthony011@gmail.com",
+    "phone": "215-347-0245",
+    "location": "Philadelphia, PA",
+    "linkedIn": "https://www.linkedin.com/in/myanthony/",
+    "summary": "Analyze, design, and implement technology solutions to complex enterprise problems. Managed over 70 projects, including 20 global projects, in four different countries. Expertise in all areas of information technologies, with an emphasis in web and telecommunications industry, including development life cycle, solution design, software development, business consulting, quality assurance, project management and production operations. Particularly effective at reducing operational costs, increasing revenue, improving customer experience, ensuring legal compliance, and managing stakeholders expectations.",
+    "skill": ["JavaScript", "HTML", "CSS", "Express", "MongoDB", "React.js"],
+    "experience": [{
+        "company": "Comcast",
+        "location": "Philadelphia, PA",
+        "position": "Technical Business Analyst",
+        "desc": "Manage XM(Xfinity Mobile) Development projects using Agile methodology throughout SDLC (Intake to Production). The area of development includes Amdocs billing/Financial, service provisioning, Order processing, API Gateway, and front-end's (web/mobile app, agent tool)",
+        "startYear": 2016,
+        "endYear": 2019
+    }],
+    "education": {
+        "school": "University of Florida",
+        "location": "Gainesville, FL",
+        "degree": "Bachelor",
+        "major": "Computer Engineering"
+    },
+    "submitter": "5c5928edbadf9810cd409183",
+    "status": "Submitted"
+}

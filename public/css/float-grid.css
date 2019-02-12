@@ -1,4 +1,4 @@
-* {
+s* {
   box-sizing: border-box;
   font-size: 16px;
 }
@@ -54,8 +54,86 @@
   margin-top: 2rem;
 }
 
+/* List item for mobile */
+.li_main {
+  list-style: none; 
+  width: 100%;
+  position: relative;
+  padding-top: 1rem;    
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #dde2e6;
+  line-height: 2em;
+  text-align: left;
+}
+.w1, .w1a, .w2, .w3 {
+  display: inline-block;
+  font-size: 1rem;
+}
+.w1::after, .w1a::after, .w2::after, .w3::after {
+  /* display: table; */
+  content: ':';
+}
+
+.inp-full {
+  margin-top: 6px;
+  margin-bottom: 13px;
+  width: 100%;
+  /* padding: 14px; */
+}
+
+.skill-box {
+  width: 50%;
+  float: left;
+}
+
 /* Non-mobile, grid Originally 640 -> Updated 760 */
 @media only screen and (min-width: 760px) {
+  .skill-box {
+    width: 20%;
+  }
+
+  .inp-full {
+    width: 680px;
+  }
+
+  /* List item */
+  .li_main {
+    display: flex;
+    justify-content: space-between;
+    /* float: left; */
+    width: 90%;
+    position: relative;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 1px solid #dde2e6;
+    line-height: 2em;
+  }
+  .w1 { /* sum should be 90% */
+    width: 10%;
+  }
+  .w1a {
+    width: 12%;
+  }
+  .w2 {
+    width: 15%;
+  }
+  .w3 {
+    width: 26%;
+  }
+  .w1, .w1a, .w2, .w3 {
+    display:flex;
+    flex-flow: wrap;
+    font-size: 1rem;
+    line-height: 1.3rem;
+    vertical-align: middle;
+  }
+
+  .w1::after, .w1a::after, .w2::after, .w3::after {
+    /* display: table; */
+    content: '';
+  }
   /* 3 columns, 3/12 in % */
   .col-3 {
     width: 25%;
@@ -82,7 +160,7 @@
     width: 100%;
   }
   .mg_top {
-    margin-top: 8rem;
+    margin-top: 6rem;
   }
 }
 

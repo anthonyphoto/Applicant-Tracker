@@ -5,52 +5,233 @@
     <meta name="viewport" content="width=device-width">
   	<meta name="description" content="exif info analysis">
     
-    <title>Image LookUp</title>
+    <title>Applicant-Tracker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-    <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">-->
-    <link href="float-grid.css" rel="stylesheet" type="text/css" />
-    <link href="index.css" rel="stylesheet" type="text/css" />
+    <link href="./css/float-grid.css" rel="stylesheet" type="text/css" />
+    <link href="./css/index.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <header role='banner'>
-      <div class='banner'>
-        <h2>Look up images, anywhere, anytime
-        </h2>
-        <p class='ban_desc'>Getting tired of tracking image information? This page will allow to analyze your local images from your phone, tablet, or computer.  You can easily check image information such as camera brand, setting, file info, and timestamp the photo was taken. You can also view a map indicating where the photo was taken and check the current weather of that place.
-        </p>     
-      </div>
-    </header>  
-    <main class='main_bg' role='main'>
+    <header role='banner' class='banner'>
       <div class='row'> 
-        <div class='col-6'>
-          <p class='font_l ind_l mg_top'>Upload a local file to read</p>
-          <input id="file-input" type="file" class="inputfile" name="yourFile" accept="image/*" />
-          <label for="file-input" class="btn_blue ind_l">Choose an image</label>
-          <div id='js-demo' class='demo_link'>
-            <!--  <a href="/" onclick="return false;">Show Demo</a>  -->
-            <a href="/">Show Demo</a>
-          </div>
+        <div id='js-main' class='col-12'>
+          <section id='js-top-link' class="top al_left"><a id='js-login-link' href>Sign In</a></section>
+          <p class='font_l font_el ind_l mg_top'><span id='js-name-main'></span>Looking for</BR>Software Engineer Jobs?</p>
+          <p class='font_m ind_l mg_top'>Please drop your resume here</p>
+          <button type="submit" class="btn_black ind_l">Start Here</button>
           <div class='mg_top'></div> <!-- add extra space -->
         </div>
-        <div class='col-6'>
+      </div>
+    </header>
+    <section class='login hidden' id="js-signup" role="region">                  
+      <div class="form">
+          <legend class='font_m'>Sign up</legend>
+          <form method="post">
+              <fieldset name="signup">                
+                <label for="username-s">Username</br></label>
+                <input value="test1" type="text" name="username" id="username-s" class="inp" placeholder="" required />
+                <label for="fname-s">First Name</label>
+                <input value="Anthony" type="text" name="fname" id="fname-s" class="inp" placeholder="" required />
+                <label for="lname-s">Last Name</label>
+                <input value="Kim" type="text" name="lname" id="lname-s" class="inp" placeholder="" required />
+                <label for="password">Password</label>
+                <input value="guest" type="password" name="password" id="password" class="inp" required />
+                <label for="password2">Repeat Password</label>
+                <input value="guest" type="password" name="password2" id="password2" class="inp" required />
+              </fieldset>
+              <button type="submit" class="button inp">Sign up</button>
+          </form>
           <div>
-            <img class='cover' src='./img/main.jpg' alt='main_image'>
+            <p class="ban_desc al_center">Already have an account? <a id="js-login-link2" href="">Sign In</a></p>
+            <p class="line_sp"></p> <!--exptra line space-->
           </div>
+      </div>
+    </section>
+    <section class='login hidden' id="js-login" role="region">                  
+        <div class="form">
+            <legend class='font_m'>Sign In</legend>
+            <form method="post">
+                <fieldset name="login">
+                    <label for="username-l">Username</label>
+                    <input type="text" name="username" id="username-l" class="inp" placeholder="" required />
+                    <label for="password-l">Password</label>
+                    <input type="password" name="password" id="password-l" class="inp" required />
+                </fieldset>
+                <button type="submit" class="button inp">Sign In</button>
+            </form>
+            <div>
+              <p class="ban_desc al_center">Don't have an account? <a href id='js-signup-link'>Sign up</a></p>
+              <p class="line_sp"></p> <!--exptra line space-->
+            </div>
+        </div>
+    </section>
+    <div id='js-popup-bg' class='dark hidden'></div>
+    <section class='popup hidden' id="js-popup" role="region">                  
+        <div id='js-err-title' class='font_l green'>message title</div></br>
+        <div id='js-err-message' class='font_m mg0'>message goes here</div>
+        <div id='js-btn'></div>
+    </section>
+      
+    <main class='main_bg' role='main'>
+      <div class='row'> 
+        <div class='col-12'>
+          <!--List landing page-->
+          <section id='js-list' class='hidden' role='regional'>
+            <p id='js-list-title' class='font_l ind_l float'>Applicants List</p>
+            <a id='js-all-list-link' class='clr link_bot' href>Go to Your list ></a>
+            <!-- <div class='clr'></div> -->
+            <p class="line_sp"></p> <!--exptra line space-->
+            <ul id='js-ul' class='al_center'>
+              <li class='li_main'>
+              <!-- list itemswill be rendered by js -->
+            </ul>
+          </section>
+          <!--List landing page End-->
+          <section id='js-detail' class='ind_l mg_top hidden' role='regional'>
+            <!-- To be filled by JS -->
+          </section>
+          <!--Submit page-->
+          <section id='js-post' class='hidden' role='regional'>
+            <p id='js-name-post' class='font_l ind_l'>Name,</p>
+            <p id='js-msg-post' class='font_m ind_l'>message</p>
+            <p class="line_sp"></p> <!--exptra line space-->
+            <form id='ant-1' class="ind_l" method="post">
+              <legend class='font_m blue section-border'>Personal Info</legend>
+              <fieldset name="personalInfo">
+                <div class='blk'>
+                  <label for="fname">First Name <span class='red-bold'>*</span></label>
+                  <input value="Anthony" type="text" name="fname" id="fname" class="inp" placeholder="" required />
+                </div>
+                <div class='blk'>
+                  <label for="lname">Last Name <span class='red-bold'>*</span></label>
+                  <input value="Kim" type="text" name="lname" id="lname" class="inp" placeholder="" required />
+                </div>
+                <div class='clr'></div>
+                <div class='blk'>
+                  <label for="email">Email <span class='red-bold'>*</span></label>
+                  <input value="anhtony011@gmail.com" type="email" name="email" id="email"class="inp" placeholder="foo@bar.com" required />
+                </div>
+                <div class='blk'>
+                    <label for="phone">Phone <span class='red-bold'>*</span></label>
+                    <input value="215-347-0245" type="tel" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="inp" placeholder="123-456-7890" required />
+                </div>
+                <div class='clr'></div>
+                <div class='blk'>
+                  <label for="linkedin">LinkedIn</label>
+                  <input value="https://www.linkedin.com/in/myanthony/" type="url" name="linkedin" id="linkedin" class="inp" placeholder="https://www.linkedin.com/in/xyz" />
+                </div>
+                <div class='blk'>
+                    <label for="loc">Location <span class='red-bold'>*</span></label>
+                    <input value="Philadelphia, PA" type="text" name="loc" id="loc" class="inp" placeholder="Philadelphia, PA" required />
+                </div>
+              </fieldset>
+
+              <legend class='font_m  blue section-border'>Summary & Skills</legend>
+              <fieldset name="skills">
+                <label for="title">Title <span class='red-bold'>*</span></label>
+                <select id="title" required>
+                  <option value="">--Please select a title--</option>
+                  <option value="Software Engineer">Software Engineer</option>
+                  <option value="Web Developer">Web Developer</option>
+                  <option selected value="Fullstack Software Engineer">Fullstack Software Engineer</option>
+                  <option value="Front-end Developer">Front-end Developer</option>
+                  <option value="Back-end Developer">Back-end Developer</option>
+                  <option value="DevOps Engineer">DevOps Engineer</option>
+                  <option value="Data Scientist">Data Scientist</option>
+                  <option value="Embedded Software Engineer">Embedded Software Engineer</option>
+                  <option value="QA Engineer">QA Engineer</option>
+                </select></br></br>
+                <div class='clr'></div>
+
+                <label for="summary">Summary <span class='red-bold'>*</span></label></br>
+                <textarea name="summary" id="summary" class="inp-full" placeholder="Please describe your summary in a couple of sentences" rows="5" minlength='20' maxlength='1200' required >Expertise in all areas of information technologies, with an emphasis in web and telecommunications industry, including development life cycle, solution design, software development, business consulting, quality assurance, project management and production operations.</textarea></br></br>
+                <label for="skills">Tech Skills - Check all that apply</label>
+                <div id='js-skill' class='inp-full line2'>
+                  <!-- skill list to be loaded here --> 
+                </div>
+              </fieldset>
+
+              <legend class='font_m blue section-border'>Professional Experience</legend>
+              <fieldset id='js-exp-sec' name="experience">
+                <div id='js-company1'>
+                  <div class='company-div blue'>
+                    Company 1
+                  </div>
+                  <div class='blk'>
+                    <label for="company1">Name</label>
+                    <input value="Comcast" type="text" name="company1" id="company1" class="inp" placeholder="e.g. Comcast" />
+                  </div>
+                  <div class='blk'>
+                    <label for="loc1">Location</label>
+                    <input value="Philadelphia, PA" type="text" name="loc1" id="loc1" class="inp" placeholder="e.g. Philadelphia, PA" />
+                  </div>
+                  <div class='clr'></div>
+                  <div class='blk'>
+                    <label for="title1">Title</label></br>
+                    <input value="Business Systems Analyst" type="text" name="title1" id="title1" class="inp" placeholder="e.g. Software Engineer" />
+                  </div>
+                  <div class='blk'>
+                    <label for="desc1">Description</label></br>
+                    <input value="Manage XM(Xfinity Mobile) Development projects using Agile methodology throughout SDLC (Intake to Production)" type="text" name="desc1" id="desc1" class="inp" placeholder="e.g. Developed web applications" />
+                  </div>
+                  <div class='clr'></div>
+                  <div class='blk'>
+                    <label for="start1">Start Month</label></br>
+                    <input value="" type="month" name="start1" id="start1" class="inp" />
+                  </div>
+                  <div class='blk'>
+                    <label for="end1">End Month</label></br>
+                    <input value="" type="month" name="end1" id="end1" class="inp" />
+                  </div>
+                  <div class='clr'></div>
+                </div></br>
+              </fieldset>
+              <a id='js-add-company' href>Add another company ></a>
+
+              <legend class='font_m blue section-border'>Education</legend>
+              <fieldset name="education">
+                <div class='blk'>
+                  <label for="school">School</label>
+                  <input value="University of Florida" type="text" name="school" id="school" class="inp" placeholder="e.g. University of Florida" />
+                </div>
+                <div class='blk'>
+                  <label for="locs">Location</label>
+                  <input value="Florida" type="text" name="locs" id="locs" class="inp" placeholder="e.g. Gainesville, FL" />
+                </div>
+                <div class='clr'></div>
+                <div class='blk'>
+                  <label for="major">Major</label>
+                  <input value="Computer Engineering" type="text" name="major" id="major" class="inp" placeholder="e.g. Computer Engineering" />
+                </div>
+                <div class='blk'></br>
+                  <label for="degree">Degree</label>
+                  <select id="degree">
+                    <option value="">--Please select a degree--</option>
+                    <option value="Bachelor Degree">Bachelor Degree</option>
+                    <option value="Master Degree">Master Degree</option>
+                    <option value="Doctorial Degree">Doctorial Degree</option>
+                    <option value="Associate Degree">Associate Degree</option>
+                    <option value="High School">High School</option>
+                    <option value="No Formal Eduction">No Formal Education</option>
+                  </select></br></br>
+                </div>
+                <div class='clr'></div>
+              </fieldset>
+
+              <div id='js-btn2'>
+                <button id="js-btn-post" type="submit" class="button inp">Submit</button>
+              </div>
+            </form>
+          </section>
+            <!--Submit page End-->
         </div>
       </div>
     </main>
 
-      <div class='row'> 
-        <div class='col-12'>
-          <div id='js-img' class='al_center'> 
-          </div>
-        </div>
-      </div>
-    </div>
-
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="./js/api.js"></script>
+    <script type="text/javascript" src="./js/render.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
 
   </body>
 </html>

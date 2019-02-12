@@ -7,10 +7,10 @@ mongoose.Promise = global.Promise;
 const expSchema = mongoose.Schema({
     company: String,
     location: String,
-    position: String,
+    title: String,
     desc: String,
-    startYear: Number,
-    endYear: Number
+    startYM: String,
+    endYM: String
 });
 
 // Resume Schema
@@ -19,13 +19,14 @@ const resumeSchema = mongoose.Schema({
     lastName: { type: String, required: true },
     email: { type: String, required: true },
     phone: { type: String, required: true },
-    location: String,
     linkedIn: String,
-    suammary: String,
+    location: String,
+    title: String,
+    summary: String,
     skill: [String],
     experience: [expSchema],
     education: {
-        shool: { type: String, required: true },
+        school: { type: String, required: true },
         location: String,
         degree: String,
         major: String
