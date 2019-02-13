@@ -29,6 +29,8 @@ This app is a MVP version of HR tool, which allows HR or recruiting company to t
 ### Sample Screenshot (Logged-in Page)
 ![Sample1](https://anthonyphoto.github.io/Applicant-Tracker/public/img/shot1.jpg)
 
+
+
 ### Sample Screenshot (View Resume)
 ![Sample2](https://anthonyphoto.github.io/Applicant-Tracker/public/img/shot2.jpg)
 
