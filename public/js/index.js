@@ -11,7 +11,6 @@ function getAuthInfo(){
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace('-', '+').replace('_', '/');
     const obj = JSON.parse(window.atob(base64));
-    console.log(obj.user);
     return obj.user;   
   }
 }
@@ -32,8 +31,9 @@ function handleLoginLink() {
 function handleSignupLink() {
   $('#js-signup-link').on('click', function(event) {
     event.preventDefault();
-    clearSections();
+    // clearSections();
     console.log('test');
+    $('#js-login').addClass('hidden');
     $('#js-signup').removeClass('hidden');
     $(window).scrollTop(0); 
   });
@@ -338,31 +338,49 @@ function handleUserListClick(){
   });
 }
 
-  
+function handleStatusUpdate() {
+  $('#js-detail').on('submit', 'form#js-status-update', function(event){
+    event.preventDefault();
+    const status = $(this).find('#status').val();
+    const id = $('#js-btn-status').val();  
+    putStatus(id, status);
+  });
+}  
+
+function handlePostCancel() {
+  $('#js-post').on('click', '#js-post-cancel', function(event){
+    // debugger;
+    event.preventDefault();
+    renderPrevList();
+    // console.log('cancel clicked');
+
+  });
+}
 
 $(_=> {
 //  testModule();
 // renderPostResumePage(); //testing only
   renderLogStatus();  // Show user's name if logged in
- getResumes(); // List resume list in landing page
- handleDetailLink();  // Detect Detailed Resume link is clicked
- handleLoginLink();  // Detect Login link is clicked
- handleSignupLink();  // Detect Signup link is clicked
- handleSignup();
- handleLogin();
- handleConfirm();  // Detect message is confirmed
- handleLogoutLink();
- handleResumeSubmitLink(); // Detect Post Resume Link is clicked
- handleAddCompany(); // add more experience
- handleResumeSubmit();  // Upon resume submission
- handleBackToList();   // "Go back to List" link in Detail page
- handleDeleteClick();  // Upon delete request
- handleUpdateLinkClick();  // Upon Update link click
- handleUpdateSubmit(); 
- handleAllListClick();
- handleUserListClick();
- 
- //  getResumeByUser('ddolbok'); // List resume list in landing page
+  getResumes(); // List resume list in landing page
+  handleDetailLink();  // Detect Detailed Resume link is clicked
+  handleLoginLink();  // Detect Login link is clicked
+  handleSignupLink();  // Detect Signup link is clicked
+  handleSignup();
+  handleLogin();
+  handleConfirm();  // Detect message is confirmed
+  handleLogoutLink();
+  handleResumeSubmitLink(); // Detect Post Resume Link is clicked
+  handleAddCompany(); // add more experience
+  handleResumeSubmit();  // Upon resume submission
+  handleBackToList();   // "Go back to List" link in Detail page
+  handleDeleteClick();  // Upon delete request
+  handleUpdateLinkClick();  // Upon Update link click
+  handleUpdateSubmit(); 
+  handleAllListClick();
+  handleUserListClick();
+  handleStatusUpdate(); // only admin can update this
+  handlePostCancel();  // Upon Cancellation
+  //  getResumeByUser('ddolbok'); // List resume list in landing page
 });
 
 /* test module (to be deleted) */

@@ -29,15 +29,15 @@
           <form method="post">
               <fieldset name="signup">                
                 <label for="username-s">Username</br></label>
-                <input value="test1" type="text" name="username" id="username-s" class="inp" placeholder="" required />
+                <input value="test1" type="text" name="username" id="username-s" class="inp" minlength="5" placeholder="" required />
                 <label for="fname-s">First Name</label>
                 <input value="Anthony" type="text" name="fname" id="fname-s" class="inp" placeholder="" required />
                 <label for="lname-s">Last Name</label>
                 <input value="Kim" type="text" name="lname" id="lname-s" class="inp" placeholder="" required />
                 <label for="password">Password</label>
-                <input value="guest" type="password" name="password" id="password" class="inp" required />
+                <input value="guest" type="password" name="password" id="password" class="inp" minlength="5" required />
                 <label for="password2">Repeat Password</label>
-                <input value="guest" type="password" name="password2" id="password2" class="inp" required />
+                <input value="guest" type="password" name="password2" id="password2" class="inp" minlength="5" required />
               </fieldset>
               <button type="submit" class="button inp">Sign up</button>
           </form>
@@ -82,9 +82,11 @@
             <!-- <div class='clr'></div> -->
             <p class="line_sp"></p> <!--exptra line space-->
             <ul id='js-ul' class='al_center'>
-              <li class='li_main'>
               <!-- list itemswill be rendered by js -->
             </ul>
+            
+            <div id='js-demo-note' class='ind_l line_sp'>* Currently this app is set to allow all users to view the list for demo purpose.</div>
+            <p class="mg_top"></p> 
           </section>
           <!--List landing page End-->
           <section id='js-detail' class='ind_l mg_top hidden' role='regional'>
@@ -221,7 +223,10 @@
               <div id='js-btn2'>
                 <button id="js-btn-post" type="submit" class="button inp">Submit</button>
               </div>
+              <a id='js-post-cancel' href>Cancel and go back to List ></a>
+
             </form>
+            <p class="line_sp"></p> <!--exptra line space-->
           </section>
             <!--Submit page End-->
         </div>

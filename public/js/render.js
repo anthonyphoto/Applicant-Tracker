@@ -2,13 +2,13 @@
 
 /* hide all open sections */
 function clearSections(){
-    $('#js-list, #js-login, #js-signup, #js-post, #js-detail').addClass('hidden');
+    $('#js-list, #js-login, #js-signup, #js-post, #js-detail, #js-admin-form').addClass('hidden');
 }
 
 function renderLoginPage(event){
-    console.log('here');
     if (event) event.preventDefault();
-    clearSections();
+    // clearSections();
+    $('#js-signup').addClass('hidden');
     $('#js-login').removeClass('hidden');
 
     // $(window).scrollTop( $("#js-rpt").offset().top ); /* Page scroll to result page */
@@ -48,10 +48,12 @@ function renderLogStatus(){
       if (firstName) {
         $('#js-top-link').empty().append(`<a id='js-logout-link' href="">Sign Out</a>`);
         $('#js-name-main').html(`Hi, ${firstName}!</br>`);
+        $('#js-main button').html('Post Your Resume');
       }
     }else {
       $('#js-top-link').empty().append(`<a id='js-login-link' href="">Sign In</a>`);
       $('#js-name-main').empty();
+      $('#js-main button').html('Start Here');
     }
 }
 
@@ -65,12 +67,15 @@ function renderList(resumes, filter = 'all') {
     // $('#js-list-title').html(listTitle);
 
     if (filter ==='user') {
-        $('#js-list-title').html('My Resume List');
-        $('#js-list a').attr('id', 'js-all-list-link').html('Go to All List');
+        $('#js-list-title').html(`${usr.firstName}'s Resume List`);
+        $('#js-list a').attr('id', 'js-all-list-link').html('Go to All List >');
+        $('#js-demo-note').addClass('hidden');
     } else {
         $('#js-list-title').html('All Applicants List');
+        $('#js-demo-note').removeClass('hidden');
+
         if (usr) {
-            $('#js-list a').attr('id', 'js-user-list-link').html('Go to Your List');
+            $('#js-list a').attr('id', 'js-user-list-link').html('Go to Your List >');
         } else {
             $('#js-list a').empty();
         }
@@ -111,6 +116,8 @@ function renderList(resumes, filter = 'all') {
             <div class='w1a'><a id='${id}' class='thin' href>View Detail ></a></div>
         </li>`);
     }
+    // $(window).scrollTop(0); 
+    // $(window).scrollTop($("#js-name-main").offset().top );       
 }
 
 function renderPrevList(){
@@ -242,8 +249,10 @@ function renderDetail(resume) {
             <button type="submit" id="js-go-list" class="btn_black">Back to List</button>
         </div>
         <div class=line_sp>* Only admin or submitter can modify or delete the posts.</div>
-        <p class="line_sp"></p> <!--exptra line space-->
+        <div id='js-admin-form' class='hidden'></div>
+        <p class="mg_top"></p> <!--exptra line space-->
     `);
+    
 
     if (loggedUser){
         if (loggedUser.username === resume.submitter.username || loggedUser.admin) {
@@ -251,7 +260,28 @@ function renderDetail(resume) {
             <button type="submit" id="js-delete" value='${id}' class="btn_black ind_l">Delete</button>`);
         }
     }
-        $(window).scrollTop( $("main").offset().top );       
+
+    if(loggedUser.admin) {
+        $('#js-admin-form').removeClass('hidden').html(`
+        <div class='section-border'></div>
+        <div class='blk line15 inp-full'>
+            <p class='font_ms red'>Status Update (Admin only)</p>
+            <form id='js-status-update' method='post'>
+                <select id="status" required>
+                <option value="Submitted">Submitted</option>
+                <option value="Interview Scheduled">Interview Scheduled</option>
+                <option value="In Review">In Review</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Offer">Offer</option>
+                </select>&nbsp; &nbsp; 
+                <button id="js-btn-status" type="submit" value='${id}'> Update</button>
+            </form>
+        </div>
+        `);
+        $(`#js-status-update option[value = '${resume.status}']`).attr('selected', 'true');
+    }
+        
+    $(window).scrollTop( $("main").offset().top );       
 }
 
 function renderPostResumePage(){
@@ -324,8 +354,6 @@ function renderUpdatePage(resume){
         $(`#end${compId + 1}`).attr('value', exp.endYM);
     });
     
-
-
     $(window).scrollTop($("main").offset().top); 
 
 }

@@ -47,7 +47,7 @@ function postLogin(usr) {
     throw new Error(response.statusText);
   })
   .then(data => {
-    console.log(data.authToken);
+    // console.log(data.authToken);
     localStorage.setItem('authToken', data.authToken);
 
     $('#js-login').addClass('hidden');
@@ -309,6 +309,7 @@ function putStatus(id, status) {
     throw new Error(response.statusText);
   })
   .then(data => {
+    renderMessage({ title: 'Success', message: `Application status is set to ${status}.`});
     console.log(data);
   })
   .catch(err => {
