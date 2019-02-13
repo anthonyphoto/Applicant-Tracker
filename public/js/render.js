@@ -94,7 +94,6 @@ function renderList(resumes, filter = 'all') {
         const id = resumes[i]._id;
         const created = customDate(new Date(resumes[i].created))[0];
 
-
         const name = resumes[i].firstName + ' ' + resumes[i].lastName;
         const title = resumes[i].title;
         const username = resumes[i].submitter.username;
@@ -115,9 +114,7 @@ function renderList(resumes, filter = 'all') {
             <div class='w1'>${status}</div>
             <div class='w1a'><a id='${id}' class='thin' href>View Detail ></a></div>
         </li>`);
-    }
-    // $(window).scrollTop(0); 
-    // $(window).scrollTop($("#js-name-main").offset().top );       
+    }    
 }
 
 function renderPrevList(){
@@ -127,7 +124,6 @@ function renderPrevList(){
     } else {
         getResumes();
     }
-
 }
 
 function getSkillDetailHtml(skills){
@@ -202,10 +198,9 @@ function getCompanyDetailHtml(exp) {
 }
 
 function renderDetail(resume) {
-    console.log('render', resume);
+    // console.log('render', resume);
     const id = resume._id;
     const loggedUser = getAuthInfo();
-
     clearSections();
 
     $('#js-detail').removeClass('hidden').empty().html(`
@@ -252,7 +247,6 @@ function renderDetail(resume) {
         <div id='js-admin-form' class='hidden'></div>
         <p class="mg_top"></p> <!--exptra line space-->
     `);
-    
 
     if (loggedUser){
         if (loggedUser.username === resume.submitter.username || loggedUser.admin) {
@@ -280,35 +274,37 @@ function renderDetail(resume) {
         `);
         $(`#js-status-update option[value = '${resume.status}']`).attr('selected', 'true');
     }
-        
     $(window).scrollTop( $("main").offset().top );       
 }
 
 function renderPostResumePage(){
     clearSections();
+
     $('#js-post').removeClass('hidden');
     $('#js-post form').attr('id', 'js-new-submit');
     $('#js-skill').empty();
 
+    
     $('#js-name-post').html(`${getAuthInfo().firstName},`);
     $('#js-msg-post').html(`Please submit your resume. We will proceed with your application process.`);
-
+    
     $('#js-btn2').html(`<button id="js-btn-post" type="submit" class="button inp">Submit</button>`);
-
+    
     for (let i = 0; i < SKILL_LIST.length; i++) {
-      $('#js-skill').append(`<div class='skill-box'>
-      <input type="checkbox" name="s${i}" id="s${i}" value="${SKILL_LIST[i]}"/>
-      <label for="s${i}"> ${SKILL_LIST[i]}</label>
-      </div>`);
+        $('#js-skill').append(`<div class='skill-box'>
+        <input type="checkbox" name="s${i}" id="s${i}" value="${SKILL_LIST[i]}"/>
+        <label for="s${i}"> ${SKILL_LIST[i]}</label>
+        </div>`);
     }
     $('#js-skill').append("<div class='clr'></div>");   // finish float sections
+
     $(window).scrollTop($("main").offset().top); 
 }
 
-
 function renderUpdatePage(resume){
-    console.log(resume);
+    // console.log(resume);
     clearSections();  
+    // $('form#js-update-submit').trigger('reset');
     $('#js-post').removeClass('hidden');    
     $('#js-post form').attr('id', 'js-update-submit');
     $('#js-skill').empty();
@@ -322,7 +318,8 @@ function renderUpdatePage(resume){
     }
     $('#js-skill').append("<div class='clr'></div>"); 
     /* Populate more company fields based on the previous input */
-    for (let i = 1; i < resume.experience.length; i++) {
+    $('#js-exp-sec').empty();
+    for (let i = 0; i < resume.experience.length; i++) {
         renderMoreCompany();
     }
     $('#js-btn2').html(`<button id="js-btn-update" value="" type="submit" class="button inp">Update</button>`);
@@ -345,7 +342,7 @@ function renderUpdatePage(resume){
     });
 
     resume.experience.forEach((exp, compId)=> {
-        console.log(compId, exp);
+        // console.log(compId, exp);
         $(`#company${compId + 1}`).attr('value', exp.company);
         $(`#loc${compId + 1}`).attr('value', exp.location);
         $(`#title${compId + 1}`).attr('value', exp.title);
@@ -353,9 +350,7 @@ function renderUpdatePage(resume){
         $(`#start${compId + 1}`).attr('value', exp.startYM);
         $(`#end${compId + 1}`).attr('value', exp.endYM);
     });
-    
     $(window).scrollTop($("main").offset().top); 
-
 }
 
 function renderMoreCompany(){
@@ -372,20 +367,20 @@ function renderMoreCompany(){
     </div>
     <div class='blk'>
       <label for="company${compId}">Name</label>
-      <input value="Comcast" type="text" name="company${compId}" id="company${compId}" class="inp" placeholder="e.g. Comcast" />
+      <input value="" type="text" name="company${compId}" id="company${compId}" class="inp" placeholder="Company Name" />
     </div>
     <div class='blk'>
       <label for="loc${compId}">Location</label>
-      <input value="Philadelphia, PA" type="text" name="loc${compId}" id="loc${compId}" class="inp" placeholder="e.g. Philadelphia, PA" />
+      <input value="" type="text" name="loc${compId}" id="loc${compId}" class="inp" placeholder="e.g. Philadelphia, PA" />
     </div>
     <div class='clr'></div>
     <div class='blk'>
       <label for="title${compId}">Title</label></br>
-      <input value="Business Systems Analyst" type="text" name="title${compId}" id="title${compId}" class="inp" placeholder="e.g. Software Engineer" />
+      <input value="" type="text" name="title${compId}" id="title${compId}" class="inp" placeholder="e.g. Software Engineer" />
     </div>
     <div class='blk'>
       <label for="desc${compId}">Description</label></br>
-      <input value="Manage XM(Xfinity Mobile) Development projects using Agile methodology throughout SDLC (Intake to Production)" type="text" name="desc${compId}" id="desc${compId}" class="inp" placeholder="e.g. Developed web applications" />
+      <input value="" type="text" name="desc${compId}" id="desc${compId}" class="inp" placeholder="e.g. Developed web applications" />
     </div>
     <div class='clr'></div>
     <div class='blk'>
@@ -398,4 +393,185 @@ function renderMoreCompany(){
     </div>
     <div class='clr'></div></br>
   </div>`);
+}
+
+function initPostHtml(){
+
+$('#js-post').html(`
+    <p id='js-name-post' class='font_l ind_l'>Name,</p>
+    <p id='js-msg-post' class='font_m ind_l'>message</p>
+    <p class="line_sp"></p> <!--exptra line space-->
+    <form id='ant-1' class="ind_l" method="post">
+      <legend class='font_m blue section-border'>Personal Info</legend>
+      <fieldset name="personalInfo">
+        <div class='blk'>
+          <label for="fname">First Name <span class='red-bold'>*</span></label>
+          <input value="" type="text" name="fname" id="fname" class="inp" placeholder="" required />
+        </div>
+        <div class='blk'>
+          <label for="lname">Last Name <span class='red-bold'>*</span></label>
+          <input value="" type="text" name="lname" id="lname" class="inp" placeholder="" required />
+        </div>
+        <div class='clr'></div>
+        <div class='blk'>
+          <label for="email">Email <span class='red-bold'>*</span></label>
+          <input value="" type="email" name="email" id="email"class="inp" placeholder="foo@bar.com" required />
+        </div>
+        <div class='blk'>
+            <label for="phone">Phone <span class='red-bold'>*</span></label>
+            <input value="" type="tel" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="inp" placeholder="123-456-7890" required />
+        </div>
+        <div class='clr'></div>
+        <div class='blk'>
+          <label for="linkedin">LinkedIn</label>
+          <input value="" type="url" name="linkedin" id="linkedin" class="inp" placeholder="https://www.linkedin.com/in/xyz" />
+        </div>
+        <div class='blk'>
+            <label for="loc">Location <span class='red-bold'>*</span></label>
+            <input value="" type="text" name="loc" id="loc" class="inp" placeholder="Philadelphia, PA" required />
+        </div>
+      </fieldset>
+      <legend class='font_m  blue section-border'>Summary & Skills</legend>
+      <fieldset name="skills">
+        <label for="title">Title <span class='red-bold'>*</span></label>
+        <select id="title" required>
+          <option value="">--Please select a title--</option>
+          <option value="Software Engineer">Software Engineer</option>
+          <option value="Web Developer">Web Developer</option>
+          <option value="Fullstack Software Engineer">Fullstack Software Engineer</option>
+          <option value="Front-end Developer">Front-end Developer</option>
+          <option value="Back-end Developer">Back-end Developer</option>
+          <option value="DevOps Engineer">DevOps Engineer</option>
+          <option value="Data Scientist">Data Scientist</option>
+          <option value="Embedded Software Engineer">Embedded Software Engineer</option>
+          <option value="QA Engineer">QA Engineer</option>
+        </select></br></br>
+        <div class='clr'></div>
+        <label for="summary">Summary <span class='red-bold'>*</span></label></br>
+        <textarea name="summary" id="summary" class="inp-full" placeholder="Please describe your summary in a couple of sentences" rows="5" minlength='20' maxlength='1200' required ></textarea></br></br>
+        <label for="skills">Tech Skills - Check all that apply</label>
+        <div id='js-skill' class='inp-full line2'>
+          <!-- skill list to be loaded here --> 
+        </div>
+      </fieldset>
+      <legend class='font_m blue section-border'>Professional Experience</legend>
+      <fieldset id='js-exp-sec' name="experience">
+        <div id='js-company1'>
+          <div class='company-div blue'>
+            Company 1
+          </div>
+          <div class='blk'>
+            <label for="company1">Name</label>
+            <input value="" type="text" name="company1" id="company1" class="inp" placeholder="Company Name" />
+          </div>
+          <div class='blk'>
+            <label for="loc1">Location</label>
+            <input value="" type="text" name="loc1" id="loc1" class="inp" placeholder="e.g. Philadelphia, PA" />
+          </div>
+          <div class='clr'></div>
+          <div class='blk'>
+            <label for="title1">Title</label></br>
+            <input value="" type="text" name="title1" id="title1" class="inp" placeholder="e.g. Software Engineer" />
+          </div>
+          <div class='blk'>
+            <label for="desc1">Description</label></br>
+            <input value="" type="text" name="desc1" id="desc1" class="inp" placeholder="e.g. Developed web applications" />
+          </div>
+          <div class='clr'></div>
+          <div class='blk'>
+            <label for="start1">Start Month</label></br>
+            <input value="" type="month" name="start1" id="start1" class="inp" />
+          </div>
+          <div class='blk'>
+            <label for="end1">End Month</label></br>
+            <input value="" type="month" name="end1" id="end1" class="inp" />
+          </div>
+          <div class='clr'></div>
+        </div></br>
+      </fieldset>
+      <a id='js-add-company' href>Add another company ></a>
+      <legend class='font_m blue section-border'>Education</legend>
+      <fieldset name="education">
+        <div class='blk'>
+          <label for="school">School</label>
+          <input value="" type="text" name="school" id="school" class="inp" placeholder="e.g. University of Florida" required />
+        </div>
+        <div class='blk'>
+          <label for="locs">Location</label>
+          <input value="" type="text" name="locs" id="locs" class="inp" placeholder="e.g. Gainesville, FL" required />
+        </div>
+        <div class='clr'></div>
+        <div class='blk'>
+          <label for="major">Major</label>
+          <input value="" type="text" name="major" id="major" class="inp" placeholder="e.g. Computer Engineering" required />
+        </div>
+        <div class='blk'></br>
+          <label for="degree">Degree</label>
+          <select id="degree" required >
+            <option value="">--Please select a degree--</option>
+            <option value="Bachelor Degree">Bachelor Degree</option>
+            <option value="Master Degree">Master Degree</option>
+            <option value="Doctorial Degree">Doctorial Degree</option>
+            <option value="Associate Degree">Associate Degree</option>
+            <option value="High School">High School</option>
+            <option value="No Formal Eduction">No Formal Education</option>
+          </select></br></br>
+        </div>
+        <div class='clr'></div>
+      </fieldset>
+
+      <div id='js-btn2'>
+        <button id="js-btn-post" type="submit" class="button inp">Submit</button>
+      </div>
+      <a id='js-post-cancel' href>Cancel and go back to List ></a>
+
+    </form>
+    <p class="line_sp"></p> <!--exptra line space-->`);
+
+
+
+//     $('#fname').val("");
+//     $('#lname').val("");
+//     $('#email').val("");
+//     $('#phone').val("");
+//     $('#linkedin').val("");
+//     $('#loc').val("");
+//     $('#title').val("");
+//     $('#summary').val("");
+//     $('#school').val("");
+//     $('#locs').val("");
+//     $('#major').val("");
+//     $('#degree').val("");
+//     $('#js-exp-sec').html(`<div id='js-company1'>
+//     <div class='company-div blue'>
+//       Company 1
+//     </div>
+//     <div class='blk'>
+//       <label for="company1">Name</label>
+//       <input value="" type="text" name="company1" id="company1" class="inp" placeholder="Company Name" />
+//     </div>
+//     <div class='blk'>
+//       <label for="loc1">Location</label>
+//       <input value="" type="text" name="loc1" id="loc1" class="inp" placeholder="e.g. Philadelphia, PA" />
+//     </div>
+//     <div class='clr'></div>
+//     <div class='blk'>
+//       <label for="title1">Title</label></br>
+//       <input value="" type="text" name="title1" id="title1" class="inp" placeholder="e.g. Software Engineer" />
+//     </div>
+//     <div class='blk'>
+//       <label for="desc1">Description</label></br>
+//       <input value="" type="text" name="desc1" id="desc1" class="inp" placeholder="e.g. Developed web applications" />
+//     </div>
+//     <div class='clr'></div>
+//     <div class='blk'>
+//       <label for="start1">Start Month</label></br>
+//       <input value="" type="month" name="start1" id="start1" class="inp" />
+//     </div>
+//     <div class='blk'>
+//       <label for="end1">End Month</label></br>
+//       <input value="" type="month" name="end1" id="end1" class="inp" />
+//     </div>
+//     <div class='clr'></div>
+//   </div></br>`);
 }

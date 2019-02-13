@@ -109,6 +109,7 @@ function postResume(resume) {
       color: 'green'
     }
     renderMessage(msg);
+    $('form#js-new-submit').trigger('reset');
     moveResumeById(data._id);
   })
   .catch(err => {
@@ -140,6 +141,8 @@ function putResume(resume, id) {
       color: 'green'
     }
     renderMessage(msg);
+    $('form').trigger('reset');
+    console.log(1, 'here');
     moveResumeById(data._id);
   })
   .catch(err => {
@@ -191,32 +194,6 @@ fetch('/resumes/user/' + username, {
     });
 }
 
-
-/* parameter: user id */
-// function getResumeByUser(id) {
-//   const authToken = localStorage.getItem('authToken');
-//   return new Promise(resolve => {
-//     fetch('/resumes/user/' + id, {
-//       headers: {
-//         'Content-Type': 'application/json',
-//         Authorization: `Bearer ${authToken}`
-//       },
-//       method: 'GET'
-//     })
-//     .then(response => {
-//       if (response.ok) return response.json();
-//       throw new Error(response.statusText);
-//     })
-//     .then(data => {
-//       return resolve(data);
-//     })
-//     .catch(err => {
-//       console.error(err);
-//       renderError(err);
-//     });
-//   });
-// }
-
 // Get a resume by resume id (all access)
 function getResume(id) {
   const authToken = localStorage.getItem('authToken');
@@ -241,30 +218,6 @@ function getResume(id) {
     });
   });
 }
-
-
-
-
-// function getResume(id) {
-//   fetch('/resumes/' + id, {
-//     headers: {
-//       'Content-Type': 'application/json',
-//       Authorization: `Bearer ${authToken}`
-//     },
-//     method: 'GET'
-//   })
-//   .then(response => {
-//     if (response.ok) return response.json();
-//     throw new Error(response.statusText);
-//   })
-//   .then(data => {
-//     renderDetail(data);
-//   })
-//   .catch(err => {
-//     console.error(err);
-//     renderError(err);
-//   });
-// }
 
 // Delete resume (owner access)
 function deleteResume(id){

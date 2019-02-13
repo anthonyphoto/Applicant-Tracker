@@ -31,26 +31,12 @@ function handleLoginLink() {
 function handleSignupLink() {
   $('#js-signup-link').on('click', function(event) {
     event.preventDefault();
-    // clearSections();
     console.log('test');
     $('#js-login').addClass('hidden');
     $('#js-signup').removeClass('hidden');
     $(window).scrollTop(0); 
   });
 }
-
-// function handleConfirm() {
-//   $('#js-btn').on('click', '#js-btn-ok', function(){
-//     $('#js-popup-bg, #js-popup').addClass('hidden');
-    
-//     /* focus on the error section if available */
-//     const focus = $('#js-err-title').attr('value');
-//     if (focus) {
-//       $('#js-err-title').attr('value', '');
-//       $(`#${focus}`).focus();
-//     }
-//   });
-// }
 
 function handleConfirm() {
   return new Promise(resolve => {
@@ -84,7 +70,6 @@ function handleSignup() {
     const lastName = $(this).find('#lname-s').val();
     const password = $(this).find('#password').val();
     const password2 = $(this).find('#password2').val();
-
     const usr = { username, firstName, lastName, password };
 
     if (password !== password2){
@@ -105,7 +90,6 @@ function handleSignup() {
 function handleLogin() {
   $('#js-login').on('submit', 'form', function(event) {
     event.preventDefault();
-    // const inp =$(this)
     const username = $(this).find('#username-l').val();
     const password = $(this).find('#password-l').val();
 
@@ -125,7 +109,6 @@ function handleLogoutLink() {
   });
 }
 
-
 function handleResumeSubmitLink(){
   $('#js-main').on('click', 'button', function(event) {  
     event.preventDefault();
@@ -133,6 +116,9 @@ function handleResumeSubmitLink(){
       renderLoginPage();
       return;
     }
+    /* reset the form */
+initPostHtml();
+
     renderPostResumePage();
   });
 }
@@ -188,7 +174,6 @@ function parseCompany(target) {
 }
 
 function parseResumeForm(target) {
-
   const skill = [];
   const checkedList = $(target).find('#js-skill >> :checked');   
   // const tmpList = checkedList.map(a=>a.id);   // why not working??
@@ -233,6 +218,7 @@ function handleResumeSubmit(){
     }
     console.log(resume);
     postResume(resume);  
+    // $('form#js-new-submit').trigger('reset');
   });
 }
 
@@ -255,13 +241,11 @@ function handleDetailLink(){
     event.preventDefault();
     const id = $(this).attr('id');
     moveResumeById(id);
-    // console.log($('#js-list').attr('value'));
   });
 }
 
 function handleBackToList(){
   $('#js-detail').on('click', '#js-go-list', function(event){
-    
     event.preventDefault();
     renderPrevList();
   });
@@ -293,6 +277,7 @@ function handleUpdateLinkClick(){
     event.preventDefault();
     const id = $('#js-update').attr('value');
 
+    initPostHtml();
     $('#js-post').attr('value', id);  // store id in #js-post
     getResume(id)
      .then(resume => renderUpdatePage(resume));
@@ -310,7 +295,6 @@ function handleUpdateSubmit(){
       renderMessage(resume.experience);
       return;
     }
-
     const id = $('#js-post').attr('value');
     console.log(resume);
     putResume(resume, id);  
@@ -334,7 +318,6 @@ function handleUserListClick(){
     else {
       renderError('Please log in first');
     }
-
   });
 }
 
@@ -358,8 +341,6 @@ function handlePostCancel() {
 }
 
 $(_=> {
-//  testModule();
-// renderPostResumePage(); //testing only
   renderLogStatus();  // Show user's name if logged in
   getResumes(); // List resume list in landing page
   handleDetailLink();  // Detect Detailed Resume link is clicked
@@ -380,79 +361,6 @@ $(_=> {
   handleUserListClick();
   handleStatusUpdate(); // only admin can update this
   handlePostCancel();  // Upon Cancellation
-  //  getResumeByUser('ddolbok'); // List resume list in landing page
+//  getResumeByUser('ddolbok'); // Testing List resume list in landing page
 });
 
-/* test module (to be deleted) */
-function testModule() {
-  const newUser = {
-    username: "test",
-    password: "guest",
-    firstName: "Tony",
-    lastName: "Kim"
-  }
-
-  const logUser = {
-    username: "test",
-    password: "guest",
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /* Ignore below */ 
-  const resume = {
-      "firstName": "Anthony O",
-      "lastName": "Kim",
-        "email": "anthony011@gmail.com",
-        "phone": "215-347-0245",
-        "location": "Philadelphia, PA",
-        "linkedIn": "https://www.linkedin.com/in/myanthony/",
-        "summary": "Analyze, design, and implement technology solutions to complex enterprise problems. Managed over 70 projects, including 20 global projects, in four different countries. Expertise in all areas of information technologies, with an emphasis in web and telecommunications industry, including development life cycle, solution design, software development, business consulting, quality assurance, project management and production operations. Particularly effective at reducing operational costs, increasing revenue, improving customer experience, ensuring legal compliance, and managing stakeholders expectations.",
-        "skill": ["JavaScript", "HTML", "CSS", "Express", "MongoDB", "React.js"],
-        "experience": [{
-            "company": "Comcast",
-            "location": "Philadelphia, PA",
-            "position": "Technical Business Analyst",
-            "desc": "Manage XM(Xfinity Mobile) Development projects using Agile methodology throughout SDLC (Intake to Production). The area of development includes Amdocs billing/Financial, service provisioning, Order processing, API Gateway, and front-end's (web/mobile app, agent tool)",
-            "startYear": 2016,
-            "endYear": 2019
-        }],
-        "education": {
-            "school": "University of Florida",
-            "location": "Gainesville, FL",
-            "degree": "Bachelor",
-            "major": "Computer Engineering"
-        },
-        "status": "sss"
-  }
-
-  putStatus("5c5a6f62b9cf7e1f1a989e52", "In Progress");
-  // deleteResume('5c5bb6528d7cf135936e52f3');
-
-  // putResume(resume, '5c5b9def82f8f9323fff0155');
-  // postLogin({ username: 'mindtracer', password: 'guest'});
-  // getResume("5c5a6f62b9cf7e1f1a989e52");
-
-// postResume(resume);
-  // postRefresh();
-  //  postLogin(logUser);
-  //  postSignup(newUser);
-
-}

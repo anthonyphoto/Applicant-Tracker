@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-  /* font-weight: 300; */
 }
 
 body {
@@ -9,19 +8,11 @@ body {
   font-size: 16px;
   color: #2a2c2d;
   background-color: #f2f4f5; 
-    /* background-color: #F2F4F5;  */
-/*  background-color: #3C3C3C; */
 }
-
-/* display: inline-block;
-padding: 0 10px;
-color: #FFFFFF;
-transition: color 0.4s ease 0s; */
 
 .blk {
   float: left;
   width: 360px;
-  /* border: 1px solid red; */
 }
 .clr {
   clear: left;
@@ -32,10 +23,7 @@ transition: color 0.4s ease 0s; */
 
 .line15 {
   line-height: 1.5rem;
-  /* font-size: 0.9rem; */
 }
-
-
 
 .main_bg {
   background-color: white;
@@ -43,7 +31,6 @@ transition: color 0.4s ease 0s; */
   padding-top: 24px;
   padding-bottom: 36px;
   margin: 4em auto;
-
   box-shadow: 0 0 10px #D0D0D0;
   border: 1px solid #DDDDDD;
 }
@@ -57,26 +44,20 @@ transition: color 0.4s ease 0s; */
   background: url('../img/background.jpg');  
   background-repeat: no-repeat;
   background-position: right 0 top;
-  /* background-position: 200% 200%; */
   background-attachment: fixed;
-
   background-size: 100%;
-  /* background-size: cover; */
   padding: 2rem 0 0rem;
   display: block;
   position: relative;
   color: white;
-  /* text-align: center; */
   height: 38rem; 
 }
 
 /* Banner Description */
 .ban_desc {
   font-size: 1rem;
-/*  font-weight: 300;  */
   letter-spacing: 0.02rem; 
   line-height: 1.5rem;
-/*  text-align: left; */
   max-width: 800px;
   margin: 24px auto 0;
 }
@@ -87,17 +68,13 @@ h2 {
   margin: 0;
   padding: 0;
 }
-/* start form */
+
 .login {
   position: absolute;
-  /* max-width: 640px;
-  min-width: 100%; */
   width: 400px;
-  /* height: 400px; */
   left: calc(50% - 200px);
   top: 1rem;
   background-color: #FFF;
-  /* border: 2px solid #2a2c2d;; */
   border: 2px solid #e0e0e0;
   margin: 0;
   display: flex;
@@ -132,8 +109,6 @@ h2 {
   width: 320px;
 }
 fieldset {
-  /* display:flex;
-  flex-flow: row wrap; */
   border: none;
   padding: 0;
 }
@@ -153,12 +128,8 @@ fieldset {
   color: #2a2c2d;
   line-height: 2.8rem;;
   font-weight: 300;
-  /* max-width: 640px; */
   margin-top: 0.5rem;
   margin-bottom: 0.8rem;
-
-  /* border-top: 2px solid #e0e0e0; */
-  
 }
 
 .button {
@@ -166,7 +137,6 @@ fieldset {
   margin-top: 4%;
   background-color: #3c8ac9; 
   border: 2px solid #337ab4;
-  /* background-color: #67c372; */
   color: #FFF;
   font-size: 20px;
   transition-property: background;
@@ -177,14 +147,7 @@ fieldset {
 .button:focus,
 .button:active {
   background-color: #337ab4;
-  /* background-color: #2561e1; */
 }
-/* .login {
-  display: flex;
-  justify-content: center;
-  color: white;
-} */
-
 
 .li_title {
   color: #0272b6;
@@ -193,12 +156,7 @@ fieldset {
   line-height: 1rem;
   padding-left: 1%;
   vertical-align: bottom;
-  /* font-weight: 500; */
-  /* border-bottom: 1px solid #3C3C3C; */
 }
-
-
-
 
 .top {
   text-align: left;
@@ -248,6 +206,7 @@ margin-top: 2rem;
 .font_el {
   font-size: 4rem;
 }
+
 /* font medium */
 .font_m {
   font-size: 1.8rem;
@@ -273,14 +232,6 @@ margin-top: 2rem;
   font-size: 1rem;
   line-height: 1.5rem;
 }
-
-/* .spec-row {
-  margin-top: 2rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-} */
-
 
 .font_s ul li {
   font-size: 1rem;
@@ -316,16 +267,13 @@ ul {
 a:link, 
 a:visited {
   font-size: 1.1rem;
-  /* line-height: 2rem; */
   text-decoration: none;
   font-weight: 500;
   display: inline-block;
   vertical-align: middle;
   color: #0272b6;
-  /* background-color: #fff; */
-  /* margin-left: 0.5rem; */
-
 }
+
 a:hover, 
 a:focus  {
   color: #00619A;
@@ -342,6 +290,7 @@ a:focus  {
   line-height: 1.5em;
   font-weight: 300;
 }
+
 .ls-s li{
   margin-bottom: 0.7em;
 }
@@ -349,8 +298,6 @@ a:focus  {
 .blue {
   color: #0272b6;
 }
-
-
 
 .red-bold {
   font-weight: 500;
@@ -373,7 +320,6 @@ a:focus  {
 .thin:visited {
   font-weight: 300;
 }
-
 
 .btn-ok {
   width: 160px;
@@ -413,6 +359,7 @@ a:focus  {
 .img_w {
   width: 100%;
 }
+
 .valign_m {
   vertical-align: middle;
 }
@@ -426,17 +373,3 @@ a:focus  {
   margin-top: 4.7rem;
   margin-left: 1.8rem;
 }
-/* .flx {
-  position: flex;
-  justify-content: space-between;
-} */
-/* .resume_blk {
-  width:760px;
-  padding: 30px;
-  margin-left: auto;
-  margin-right: auto;
-
-  box-shadow: 3px 5px 10px #777777;
-
-  border: 1px solid #777777;
-} */
