@@ -143,6 +143,18 @@ function parseCompany(target) {
     if (company) {
       // console.log("valid", company);
       let error, focus;
+      if (!location) {
+        error = `Location is missing in ${company}`;
+        focus = `loc${i}`;
+      }
+      if (!title) {
+        error = `Title is missing in ${company}`;
+        focus = `title${i}`;
+      }
+      if (!desc) {
+        error = `Description is missing in ${company}`;
+        focus = `desc${i}`;
+      }
       if (!endYM) {
         error = `End date is missing in ${company}`;
         focus = `end${i}`;
@@ -223,7 +235,7 @@ function handleResumeSubmit(){
 }
 
 function handleAddCompany(){
-  $('#js-add-company').on('click', function(event) {
+  $('#js-post').on('click', '#js-add-company', function(event) {
     event.preventDefault();
     renderMoreCompany();
   });

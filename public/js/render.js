@@ -129,7 +129,7 @@ function renderPrevList(){
 function getSkillDetailHtml(skills){
     if (!skills.length) return "";
 
-    return skills.map(s => `<div class='skill-box flx'><img class='valign_m' src='./img/circle-check.svg' alt='checked'> <span class='valign_m'>${s}</span></div>`).reduce((a, b)=> a + b);
+    return skills.map(s => `<div class='skill-box flx'><img class='valign_m' src='./img/circle-check.svg' alt='checked'> <span class='valign_m w300'>${s}</span></div>`).reduce((a, b)=> a + b);
 }
 
 function getSchoolDetailHtml(education){
@@ -217,7 +217,7 @@ function renderDetail(resume) {
         <div class='blk line_sp'>
             <p class='font_l font_el b inp-full'>${resume.firstName} ${resume.lastName}</p>            
             <div class='font_m mg0'>${resume.title}</div>
-            <div class='inp-full font_ms line2'>${resume.summary}
+            <div class='inp-full ls-s line2'>${resume.summary}
             </div>
         </div>
         <div class='clr'></div>
@@ -396,7 +396,6 @@ function renderMoreCompany(){
 }
 
 function initPostHtml(){
-
 $('#js-post').html(`
     <p id='js-name-post' class='font_l ind_l'>Name,</p>
     <p id='js-msg-post' class='font_m ind_l'>message</p>
@@ -527,51 +526,4 @@ $('#js-post').html(`
 
     </form>
     <p class="line_sp"></p> <!--exptra line space-->`);
-
-
-
-//     $('#fname').val("");
-//     $('#lname').val("");
-//     $('#email').val("");
-//     $('#phone').val("");
-//     $('#linkedin').val("");
-//     $('#loc').val("");
-//     $('#title').val("");
-//     $('#summary').val("");
-//     $('#school').val("");
-//     $('#locs').val("");
-//     $('#major').val("");
-//     $('#degree').val("");
-//     $('#js-exp-sec').html(`<div id='js-company1'>
-//     <div class='company-div blue'>
-//       Company 1
-//     </div>
-//     <div class='blk'>
-//       <label for="company1">Name</label>
-//       <input value="" type="text" name="company1" id="company1" class="inp" placeholder="Company Name" />
-//     </div>
-//     <div class='blk'>
-//       <label for="loc1">Location</label>
-//       <input value="" type="text" name="loc1" id="loc1" class="inp" placeholder="e.g. Philadelphia, PA" />
-//     </div>
-//     <div class='clr'></div>
-//     <div class='blk'>
-//       <label for="title1">Title</label></br>
-//       <input value="" type="text" name="title1" id="title1" class="inp" placeholder="e.g. Software Engineer" />
-//     </div>
-//     <div class='blk'>
-//       <label for="desc1">Description</label></br>
-//       <input value="" type="text" name="desc1" id="desc1" class="inp" placeholder="e.g. Developed web applications" />
-//     </div>
-//     <div class='clr'></div>
-//     <div class='blk'>
-//       <label for="start1">Start Month</label></br>
-//       <input value="" type="month" name="start1" id="start1" class="inp" />
-//     </div>
-//     <div class='blk'>
-//       <label for="end1">End Month</label></br>
-//       <input value="" type="month" name="end1" id="end1" class="inp" />
-//     </div>
-//     <div class='clr'></div>
-//   </div></br>`);
 }
