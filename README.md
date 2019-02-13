@@ -27,13 +27,13 @@ This app is a MVP version of HR tool, which allows HR or recruiting company to t
 * Mocha/Chai/Travis CI
 
 ### Sample Screenshot (Logged-in Page)
-![Sample1](./img/shot1.jpg)
+![Sample1](https://anthonyphoto.github.io/Applicant-Tracker/public/img/shot1.jpg)
 
 ### Sample Screenshot (View Resume)
-![Sample2](./img/shot2.jpg)
+![Sample2](https://anthonyphoto.github.io/Applicant-Tracker/public/img/shot2.jpg)
 
 ### Sample Screenshot (Tracking Management - Admin only)
-![Sample2](./img/shot3.jpg)
+![Sample2](https://anthonyphoto.github.io/Applicant-Tracker/public/img/shot3.jpg)
 
 ### Sample Screenshot (Mobile View - iPhone XR)
-![Sample2](./img/shot3.jpg)
+![Sample2](https://anthonyphoto.github.io/Applicant-Tracker/public/img/mobile1.jpg)
