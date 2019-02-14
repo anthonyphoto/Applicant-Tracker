@@ -121,12 +121,14 @@ function renderList(resumes, filter = 'all') {
 }
 
 function renderPrevList(){
-    const usr = getAuthInfo();
-    if ($('#js-list').attr('value') === 'user' && usr) {
-          getResumeByUser(usr.username); 
-    } else {
-        getResumes();
-    }
+window.location.href = `../index.html`;  
+  window.history.back();
+  // const usr = getAuthInfo();
+  //   if ($('#js-list').attr('value') === 'user' && usr) {
+  //         getResumeByUser(usr.username); 
+  //   } else {
+  //       getResumes();
+  //   }
 }
 
 function getSkillDetailHtml(skills){
@@ -202,6 +204,7 @@ function getCompanyDetailHtml(exp) {
 
 function renderDetail(resume) {
     // console.log('render', resume);
+
     const id = resume._id;
     const loggedUser = getAuthInfo();
     clearSections();
@@ -454,7 +457,7 @@ $('#js-post').html(`
         </select></br></br>
         <div class='clr'></div>
         <label for="summary">Summary <span class='red-bold'>*</span></label></br>
-        <textarea name="summary" id="summary" class="inp-full" placeholder="Please describe your summary in a couple of sentences" rows="5" minlength='20' maxlength='1200' required ></textarea></br></br>
+        <textarea name="summary" id="summary" class="inp-full" placeholder="Please describe your summary in a couple of sentences" rows="5" minlength='3' maxlength='1200' required ></textarea></br></br>
         <label for="skills">Tech Skills - Check all that apply</label>
         <div id='js-skill' class='inp-full line2'>
           <!-- skill list to be loaded here --> 

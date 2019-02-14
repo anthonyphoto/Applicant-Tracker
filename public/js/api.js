@@ -49,11 +49,11 @@ function postLogin(usr) {
   .then(data => {
     // console.log(data.authToken);
     localStorage.setItem('authToken', data.authToken);
-
     $('#js-login').addClass('hidden');
-    renderLogStatus();
-    getResumeByUser(usr.username);
-
+    
+    window.location.href = '../userlist.html';
+    // renderLogStatus();
+    // getResumeByUser(usr.username);
   })
   .catch(err => {
     console.error(err);
@@ -108,8 +108,9 @@ function postResume(resume) {
       message: `Your resume is succefully submitted.`,
       color: 'green'
     }
-    renderMessage(msg);
-    $('form#js-new-submit').trigger('reset');
+    window.location.href = `../detail.html?id=${data._id}`;
+    // renderMessage(msg);
+    // $('form#js-new-submit').trigger('reset');
     moveResumeById(data._id);
   })
   .catch(err => {
