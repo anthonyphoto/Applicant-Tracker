@@ -1,0 +1,15 @@
+s* {
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+  .main_bg {
+    background-color: white;
+    max-width: 910px;
+    padding-top: 24px;
+    padding-bottom: 36px;
+    margin: 4em auto;
+    box-shadow: 0 0 10px #D0D0D0;
+    border: 1px solid #DDDDDD;
+  }
+

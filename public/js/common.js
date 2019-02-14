@@ -270,11 +270,10 @@ function handleDetailLink(){
 function handleBackToList(){
   $('#js-detail').on('click', '#js-go-list', function(event){
     event.preventDefault();
-
-    window.history.back();
-    console.log('here');
+    window.location.href = '../index.html';
+    // window.history.back();
     $(window).scrollTop( $("main").offset().top );  
-//chk    renderPrevList();
+//    renderPrevList();
   });
 }
 
