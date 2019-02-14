@@ -53,6 +53,8 @@ function handleConfirm() {
   });
 }
 
+
+
 function handleCancel() {
   return new Promise(resolve => {
     $('#js-btn').on('click', '#js-btn-cancel', function(){
@@ -112,12 +114,13 @@ function handleLogoutLink() {
 function handleResumeSubmitLink(){
   $('#js-main').on('click', 'button', function(event) {  
     event.preventDefault();
+    // history.pushState({}, "post", "post");
     if (!getAuthInfo()) {
       renderLoginPage();
       return;
     }
     /* reset the form */
-initPostHtml();
+  initPostHtml();
 
     renderPostResumePage();
   });
@@ -316,6 +319,17 @@ function handleUpdateSubmit(){
 function handleAllListClick(){
   $('#js-list').on('click', '#js-all-list-link', function(event){
     event.preventDefault();
+    // var $this = $(this),
+    // url = $this.attr("href"),
+    // title = $this.text();
+    // console.log(url, title);
+
+    // history.pushState({
+    //      url: url,
+    //      title: title
+    //  }, title, url);
+
+    // history.pushState({ a: "all"}, "a", "all");
     getResumes();
   });
 }
@@ -323,8 +337,12 @@ function handleAllListClick(){
 function handleUserListClick(){
   $('#js-list').on('click', '#js-user-list-link', function(event){
     event.preventDefault();
-    const usr = getAuthInfo();
+
+    // history.pushState({}, "user", "user");
+
+      const usr = getAuthInfo();
     if (usr) {
+      
       getResumeByUser(usr.username); // List resume list in landing page
     }
     else {

@@ -81,6 +81,16 @@ s* {
   /* padding: 14px; */
 }
 
+.font_el {
+  font-size: 2.8rem;
+  letter-spacing: -0.01rem; 
+  color: #2a2c2d;
+  line-height: 1.23076923;
+  font-weight: 300;
+  max-width: 700px;
+  margin-bottom: 1rem;
+}
+
 .skill-box {
   width: 50%;
   float: left;
@@ -88,6 +98,10 @@ s* {
 
 /* Non-mobile, grid Originally 640 -> Updated 760 */
 @media only screen and (min-width: 760px) {
+
+  .font_el {
+    font-size: 3.8rem;
+  }
   .skill-box {
     width: 20%;
   }

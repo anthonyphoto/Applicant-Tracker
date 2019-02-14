@@ -137,10 +137,10 @@ function putResume(resume, id) {
     console.log(data);
     const msg = {
       title: "Thank you!",
-      message: `Your resume is succefully updated.`,
+      message: `Your resume is successfully updated.`,
       color: 'green'
     }
-    renderMessage(msg);
+    // renderMessage(msg);
     $('form').trigger('reset');
     console.log(1, 'here');
     moveResumeById(data._id);

@@ -26,7 +26,7 @@ const resumeSchema = mongoose.Schema({
     skill: [String],
     experience: [expSchema],
     education: {
-        school: { type: String, required: true },
+        school: String, 
         location: String,
         degree: String,
         major: String

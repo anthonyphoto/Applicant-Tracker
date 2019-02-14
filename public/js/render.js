@@ -70,9 +70,12 @@ function renderList(resumes, filter = 'all') {
         $('#js-list-title').html(`${usr.firstName}'s Resume List`);
         $('#js-list a').attr('id', 'js-all-list-link').html('Go to All List >');
         $('#js-demo-note').addClass('hidden');
+        // history.pushState({}, "a", "user-list");
+
     } else {
         $('#js-list-title').html('All Applicants List');
         $('#js-demo-note').removeClass('hidden');
+        // history.pushState({}, "b", "all-list");
 
         if (usr) {
             $('#js-list a').attr('id', 'js-user-list-link').html('Go to Your List >');
@@ -202,11 +205,15 @@ function renderDetail(resume) {
     const id = resume._id;
     const loggedUser = getAuthInfo();
     clearSections();
-
+    let phone = resume.phone;
+    if (phone.length===10){
+      phone = phone.slice(0,3) + '-' + phone.slice(3,6) + '-' + phone.slice(6,10);
+    }
+  
     $('#js-detail').removeClass('hidden').empty().html(`
     <div class='section-border mg0-all'></div>
         <div class='blk line15'>
-            <span>${resume.phone}</span></br>
+            <span>${phone}</span></br>
             <span>${resume.location}</span>
         </div>
         <div class='blk line15 al_right'>
@@ -418,7 +425,7 @@ $('#js-post').html(`
         </div>
         <div class='blk'>
             <label for="phone">Phone <span class='red-bold'>*</span></label>
-            <input value="" type="tel" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="inp" placeholder="123-456-7890" required />
+            <input value="" type="number" name="phone" id="phone" class="inp" placeholder="8885551234" required />
         </div>
         <div class='clr'></div>
         <div class='blk'>
@@ -493,27 +500,27 @@ $('#js-post').html(`
       <fieldset name="education">
         <div class='blk'>
           <label for="school">School</label>
-          <input value="" type="text" name="school" id="school" class="inp" placeholder="e.g. University of Florida" required />
+          <input value="" type="text" name="school" id="school" class="inp" placeholder="e.g. University of Florida" />
         </div>
         <div class='blk'>
           <label for="locs">Location</label>
-          <input value="" type="text" name="locs" id="locs" class="inp" placeholder="e.g. Gainesville, FL" required />
+          <input value="" type="text" name="locs" id="locs" class="inp" placeholder="e.g. Gainesville, FL" />
         </div>
         <div class='clr'></div>
         <div class='blk'>
           <label for="major">Major</label>
-          <input value="" type="text" name="major" id="major" class="inp" placeholder="e.g. Computer Engineering" required />
+          <input value="" type="text" name="major" id="major" class="inp" placeholder="e.g. Computer Engineering" />
         </div>
         <div class='blk'></br>
           <label for="degree">Degree</label>
-          <select id="degree" required >
+          <select id="degree" >
             <option value="">--Please select a degree--</option>
             <option value="Bachelor Degree">Bachelor Degree</option>
             <option value="Master Degree">Master Degree</option>
             <option value="Doctorial Degree">Doctorial Degree</option>
             <option value="Associate Degree">Associate Degree</option>
             <option value="High School">High School</option>
-            <option value="No Formal Eduction">No Formal Education</option>
+            <!--<option value="No Formal Eduction">No Formal Education</option>-->
           </select></br></br>
         </div>
         <div class='clr'></div>
