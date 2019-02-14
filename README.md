@@ -25,17 +25,15 @@ This app is a MVP version of HR tool, which allows HR or recruiting company to t
 * Node.js/Express
 * MongoDB/Gongoose
 * Mocha/Chai/Travis CI
-
+</br></br></br>
 ### Sample Screenshot (Logged-in Page)
-![Sample1](https://anthonyphoto.github.io/Applicant-Tracker/public/img/shot1.jpg)
-
-
-
+</br><img width=900 border=1 src='https://anthonyphoto.github.io/Applicant-Tracker/public/img/shot1.jpg'>
+</br></br></br>
 ### Sample Screenshot (View Resume)
-![Sample2](https://anthonyphoto.github.io/Applicant-Tracker/public/img/shot2.jpg)
-
+</br><img width=900 border=1 src='https://anthonyphoto.github.io/Applicant-Tracker/public/img/shot2.jpg'>
+</br></br></br>
 ### Sample Screenshot (Tracking Management - Admin only)
-![Sample2](https://anthonyphoto.github.io/Applicant-Tracker/public/img/shot3.jpg)
-
+</br><img width=600 border=1 src='https://anthonyphoto.github.io/Applicant-Tracker/public/img/shot3.jpg'>
+</br></br></br>
 ### Sample Screenshot (Mobile View - iPhone XR)
-![Sample2](https://anthonyphoto.github.io/Applicant-Tracker/public/img/mobile1.jpg)
+</br><img width=400 src='https://anthonyphoto.github.io/Applicant-Tracker/public/img/mobile1.jpg'>
