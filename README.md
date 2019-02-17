@@ -1,6 +1,6 @@
 ## Applicant-Tracker
 
-### Demo Link https://applicant-track.herokuapp.com/
+### Demo Link https://anthonyphoto.github.io/Applicant-Track/
 
 ### Summary
 
