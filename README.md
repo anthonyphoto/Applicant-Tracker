@@ -1,6 +1,6 @@
-## Applicant-Tracker
+## Applicant-Tracker (Node Server Repo)
 
-### Demo Link https://anthonyphoto.github.io/Applicant-Track/
+### Demo Link https://applicant-tracker-react.herokuapp.com/
 
 ### Summary
 
@@ -21,7 +21,7 @@ This app is a MVP version of HR tool, which allows HR or recruiting company to t
 * As a non-admin user, I am allowed to update or delete my posts only. 
 
 ### Technology Used
-* HTML/CSS/JavaScript/jQuery
+* React/ React Hooks/ Context API
 * Node.js/Express
 * MongoDB/Gongoose
 * Mocha/Chai/Travis CI
